@@ -1,38 +1,49 @@
 #include <stdio.h>
 #include <string.h>
 
-// Define the structure
-struct Students {
-    char name[50];
+struct employee {
+    char Name[50];
     int age;
 };
 
+void swap(struct employee* emp1, struct employee* emp2) 
+{
+    struct employee temp;
+    
+    
+   
+    temp = *emp1;
+    *emp1 = *emp2;
+    *emp2 = temp;
+}
+
 int main() {
-    // Create two instances of the structure
-    struct Students student1 = {"Jhanu", 20};
-    struct Students student2 = {"Sri", 22};
+    
+  
+    struct employee emp1,age1;
+    struct employee emp2,age2;
+    
+    printf("enter Employee1 Name:");
+    scanf("%s",emp1.Name);
+    printf("Enter Employee1 age:");
+    scanf("%d",&emp1.age);
+    printf("Enter Employee2 Name:");
+    scanf("%s",emp2.Name);
+    printf("Enter Employee2 age:");
+    scanf("%d",&emp2.age);
+    
 
-    printf("Before swapping:\n");
-    printf("Student 1: Name - %s, Age - %d\n", student1.name, student1.age);
-    printf("Student 2: Name - %s, Age - %d\n", student2.name, student2.age);
 
-    // Temporary variables for swapping
-    char temp_name[50];
-    int temp_age;
+    printf("\nBefore swapping:\n");
+    printf("Employee 1 - Name: %s, Age: %d\n", emp1.Name, emp1.age);
+    printf("Employee 2 - Name: %s, Age: %d\n", emp2.Name, emp2.age);
 
-    // Swap the name field
-    strcpy(temp_name, student1.name);
-    strcpy(student1.name, student2.name);
-    strcpy(student2.name, temp_name);
 
-    // Swap the age field
-    temp_age = student1.age;
-    student1.age = student2.age;
-    student2.age = temp_age;
+    swap( &emp1, &emp2);
 
     printf("\nAfter swapping:\n");
-    printf("Student 1: Name - %s, Age - %d\n", student1.name, student1.age);
-    printf("Student 2: Name - %s, Age - %d\n", student2.name, student2.age);
+    printf("Employee 1 - Name: %s, Age: %d\n", emp1.Name, emp1.age);
+    printf("Employee 2 - Name: %s, Age: %d\n", emp2.Name, emp2.age);
 
     return 0;
 }
